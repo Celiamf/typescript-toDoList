@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 interface ITask {
@@ -36,15 +37,16 @@ function App() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="container-sm">
+      <form className="col-5" onSubmit={handleSubmit}>
         <input
+          className="form-control mt-3"
           type="text"
           onChange={(e) => setNewTask(e.target.value)}
           value={newTask}
           autoFocus
         ></input>
-        <button>Confirm</button>
+        <button className="btn btn-primary my-3">Add</button>
       </form>
       {taskList.map((t: ITask, i: number) => {
         console.log(taskList);
@@ -62,7 +64,7 @@ function App() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 
