@@ -19,7 +19,8 @@ function App() {
 
   const addTask = (name: string) => {
     const newTaskList = [...taskList, { name, done: false }];
-    setTaskList(newTaskList);
+    if (name === "") return "";
+    else setTaskList(newTaskList);
   };
 
   const toggleTaskStatus = (i: number) => {
@@ -46,6 +47,8 @@ function App() {
         <button>Confirm</button>
       </form>
       {taskList.map((t: ITask, i: number) => {
+        console.log(taskList);
+
         return (
           <div key={i}>
             <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
