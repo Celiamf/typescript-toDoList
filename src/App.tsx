@@ -37,30 +37,37 @@ function App() {
   };
 
   return (
-    <div className="container-sm">
-      <form className="col-5" onSubmit={handleSubmit}>
+    <div className="container">
+      <form className="row justify-content-center" onSubmit={handleSubmit}>
         <input
-          className="form-control mt-3"
+          className="form-control col-4 mt-3 .bg-success"
           type="text"
           onChange={(e) => setNewTask(e.target.value)}
           value={newTask}
           autoFocus
         ></input>
-        <button className="btn btn-primary my-3">Add</button>
+        <button className="btn btn-primary col-1 m-3">Add</button>
       </form>
-      {taskList.map((t: ITask, i: number) => {
-        console.log(taskList);
 
+      {taskList.map((t: ITask, i: number) => {
         return (
-          <div key={i}>
-            <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
-              {t.name}
-            </h3>
-            <label className="switch">
-              <input type="checkbox" onChange={(e) => toggleTaskStatus(i)} />
-              <span className="slider slider-round"></span>
-            </label>
-            <button onClick={(e) => clearTask(i)}>🗑️</button>
+          <div className="row justify-content-center bg-info p-3 border">
+            <div className="col-4 ml-5 " key={i}>
+              <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
+                {t.name}
+              </h3>
+            </div>
+            <div className="col-2">
+              <label className="">
+                <input type="checkbox" onChange={(e) => toggleTaskStatus(i)} />
+              </label>
+              <button
+                className="btn btn-warning ml-2"
+                onClick={(e) => clearTask(i)}
+              >
+                🗑️
+              </button>
+            </div>
           </div>
         );
       })}
