@@ -52,15 +52,13 @@ function App() {
       {taskList.map((t: ITask, i: number) => {
         return (
           <div className="row justify-content-center bg-info p-3 border">
-            <div className="col-4 ml-5 " key={i}>
+            <div className="col-4 ml-5" key={i}>
               <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
                 {t.name}
               </h3>
             </div>
             <div className="col-2">
-              <label className="">
-                <input type="checkbox" onChange={(e) => toggleTaskStatus(i)} />
-              </label>
+              <input type="checkbox" onChange={(e) => toggleTaskStatus(i)} />
               <button
                 className="btn btn-warning ml-2"
                 onClick={(e) => clearTask(i)}
